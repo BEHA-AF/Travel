@@ -17,8 +17,8 @@
 }
 
 .logo{
-  margin-top: 26px;
-  margin-left: 40px;
+  margin-top: 50%;
+  margin-left: 80px;
   width: 65px;
   height: 36px;
   font-family: Tektur;
@@ -29,8 +29,8 @@
 }
 
 #search{
-  margin-top: 20px;
-  margin-left: 107.5px;
+  margin-top: 50%px;
+  margin-left: 50%;
   width: 720px;
   height: 48px;
   border-radius: 24px;
@@ -41,7 +41,7 @@
 
 #account{
   display: block;
-  margin-top: 20px;
+  margin-top: 50%;
   margin-left: 120px;
   width: 48px;
   height: 48px;
@@ -58,7 +58,7 @@
 }
 
 .cap1{
-  margin-top: 148px;
+  margin-top: 50%;
   margin-left: 160px;
   width: 507px;
   height: 44;
