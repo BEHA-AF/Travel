@@ -14,8 +14,8 @@
 }
 
 .logo{
-  margin-top: 80px;
-  margin-left: 26px;
+  margin-top: 26px;
+  margin-left: 80px;
   width: 65px;
   height: 36px;
   font-family: Tektur;
@@ -26,8 +26,8 @@
 }
 
 #search{
-  margin-top: 360px;
-  margin-left: 20px;
+  margin-top: 20px;
+  margin-left: 360px;
   width: 720px;
   height: 48px;
   border-radius: 24;
@@ -37,8 +37,8 @@
 }
 
 #account{
-  margin-top: 1320px;
-  margin-left: 20px;
+  margin-top: 20px;
+  margin-left: 1320px;
   width: 48px;
   height: 48px;
   border: 1px;
@@ -47,8 +47,8 @@
 }
 
 .cap1{
-  margin-top: 160px;
-  margin-left: 236px;
+  margin-top: 236px;
+  margin-left: 160px;
   width: 507px;
   height: 43;
   font-family: Inter;
@@ -59,8 +59,8 @@
 }
 
 .cap2{
-  margin-top: 160px;
-  margin-left: 288px;
+  margin-top: 288px;
+  margin-left: 160px;
   width: 520px;
   height: 19px;
   font-family: Inter;
@@ -70,8 +70,8 @@
 }
 
 .button{
-  margin-top: 160px;
-  margin-left: 330px;
+  margin-top: 330px;
+  margin-left: 160px;
   width: 180px;
   height: 48px;
   border-radius: 24;
