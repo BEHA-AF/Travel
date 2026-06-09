@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Your Next Adventure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tektur:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="home-page">
+        
+        <header class="header-frame">
+            <div class="logo">LOGO</div>
+            <div class="search-bar-container">
+                <input type="text" class="search-bar" placeholder="Search destinations, flights, hotels...">
+            </div>
+            <div class="profile-pic" aria-label="Profile Picture"></div>
+        </header>
+
+        <section class="hero-frame">
+            <p class="hero-subtitle">Book tour packages, flights, hotels & vacation rentals</p>
+            <h1 class="hero-title">Explore Your Next Adventure</h1>
+            <button class="cta-button">
+                <span>Explore Packages</span>
+            </button>
+        </section>
+
+        <nav class="tabs-container">
+            <div class="tab-item active" data-tab="explore">Explore</div>
+            <div class="tab-item" data-tab="flights">Flights</div>
+            <div class="tab-item" data-tab="hotels">Hotels</div>
+            <div class="tab-item" data-tab="rentals">Vacation Rentals</div>
+        </nav>
+
+        <main>
+            <h2 class="section-title">Popular Destinations</h2>
+
+            <div class="cards-grid">
+                <article class="destination-card card-1">
+                    <div class="card-image img-banff"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Banff National Park, Canada</h3>
+                        <span class="card-season">Jun – Sep (best season)</span>
+                        <p class="card-description">Moraine Lake, Rocky Mountains & scenic trails</p>
+                        <span class="card-price">€2,090</span>
+                        <a href="#" class="card-link">View Package →</a>
+                    </div>
+                </article>
+
+                <article class="destination-card card-2">
+                    <div class="card-image img-lucerne"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Lucerne, Switzerland</h3>
+                        <span class="card-season">Apr – Oct</span>
+                        <p class="card-description">Lake Lucerne, Chapel Bridge & Swiss Alps views</p>
+                        <span class="card-price">€1,250</span>
+                        <a href="#" class="card-link">View Package →</a>
+                    </div>
+                </article>
+
+                <article class="destination-card card-3">
+                    <div class="card-image img-bernese"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Bernese Oberland, Switzerland</h3>
+                        <span class="card-season">May – Sep</span>
+                        <p class="card-description">Alpine lakes, mountain villages & scenic boat rides</p>
+                        <span class="card-price">€1,350</span>
+                        <a href="#" class="card-link">View Package →</a>
+                    </div>
+                </article>
+
+                <article class="destination-card card-4">
+                    <div class="card-image img-kotor"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Kotor Bay, Montenegro</h3>
+                        <span class="card-season">Apr – Oct</span>
+                        <p class="card-description">Perast village, Adriatic coast & historic old towns</p>
+                        <span class="card-price">€900</span>
+                        <a href="#" class="card-link">View Package →</a>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
