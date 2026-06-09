@@ -18,7 +18,7 @@
 
 .logo{
   margin-top: 26px;
-  margin-left: 80px;
+  margin-left: 40px;
   width: 65px;
   height: 36px;
   font-family: Tektur;
@@ -30,7 +30,7 @@
 
 #search{
   margin-top: 20px;
-  margin-left: 215px;
+  margin-left: 107.5px;
   width: 720px;
   height: 48px;
   border-radius: 24px;
@@ -42,7 +42,7 @@
 #account{
   display: block;
   margin-top: 20px;
-  margin-left: 240px;
+  margin-left: 120px;
   width: 48px;
   height: 48px;
   overflow: hidden;
