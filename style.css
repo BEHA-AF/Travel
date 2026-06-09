@@ -7,12 +7,15 @@
   height: 530px;
   border-radius: 0px 24px;
   background: linear-gradient(to right, #0F2027, #203A43);
-  
+  margin-top: 0px;
+  margin-left: 0px;
 }
 
 .head{
   width: 1440px;
   height: 88px;
+  margin-top: 0%;
+  margin-left: 0px;
   
 }
 
