@@ -3,7 +3,7 @@
 }
 
 .hero{
-  width: 100%;
+  width: 1440px;
   height: 530px;
   border-radius: 0px 24px;
   background: linear-gradient(to right, #0F2027, #203A43);
@@ -11,7 +11,7 @@
 }
 
 .head{
-  width: 100%;
+  width: 1440px;
   height: 88px;
   
 }
