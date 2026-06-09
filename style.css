@@ -39,6 +39,19 @@
   
 }
 
+.search placeholder{
+  margin-left: 24px;
+  margin-top: 50%;
+  width: 130px;
+  height: 17px;
+  color: #8A8A8A;
+  line-height: 17px;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: Inter;
+  
+}
+
 #account{
   display: block;
   margin-top: 50%;
@@ -90,3 +103,4 @@
   color: ff6b00
   
 }
+
