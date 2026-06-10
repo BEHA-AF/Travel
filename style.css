@@ -21,12 +21,12 @@ body {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 4rem;
     line-height: 1.2;
 }
 
 p {
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 1.2;
 }
 
@@ -45,11 +45,17 @@ p {
 }
 
 .nav{
-  text-decoration: none;
-  color: #f7e6d7;
-  justify-content: space-between;
-  align-items: center;
-  
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+.nav a{
+    text-decoration: none;
+    color: #f7e6d7;
+    font-family: sans-serif;
 }
 
 .login{
