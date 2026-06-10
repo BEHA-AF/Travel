@@ -14,20 +14,21 @@ body {
 
 .hero {
     display: flex;
-    
+    align-items: center;
     justify-content: space-around;
-    padding: 20px;
-    height: 80vh;
+    padding: 50px;
+    height: auto;
+    min-height: 40vh;
 }
 
 h1 {
-    font-size: 2rem;
-    line-height: 1.2;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.15;
 }
 
 p {
-    font-size: 1rem;
-    line-height: 1.2;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    line-height: 1.6;
 }
 
 .button {
