@@ -43,3 +43,19 @@ p {
     
     filter: grayscale(100%);
 }
+
+.nav{
+  text-decoration: none;
+  color: #f7e6d7;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.login{
+  background: transparent;
+  border: 1px solid #f7e6d7;
+  color: #f7e6d7;
+  padding: 10px 30px;
+  cursor: pointer;
+}
