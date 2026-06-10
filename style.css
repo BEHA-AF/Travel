@@ -36,7 +36,7 @@ p {
     color: #f7e6d7;
     padding: 10px 30px;
     cursor: pointer;
-    border-radius: 25%;
+    border-radius: 12%;
 }
 
 .hero-image img {
@@ -65,5 +65,5 @@ p {
   color: #f7e6d7;
   padding: 10px 30px;
   cursor: pointer;
-    border-radius: 25%;
+    border-radius: 12%;
 }
