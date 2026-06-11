@@ -1,36 +1,1976 @@
 <!DOCTYPE html>
-
-
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <title>Home</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajmin Fayaz | UI/UX Designer Portfolio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* --- CSS4 VARIABLE VARIABLES & UTILITIES --- */
+    :root {
+      --bg-slate-950: #020617;
+      --bg-slate-900: #0f172a;
+      --bg-slate-850: #1e293b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent-rose: #f43f5e;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --transition-fast: 0.2s ease;
+      --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-slate-950);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Selection Highlight */
+    ::selection {
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    /* Scrollbar Design */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-slate-950);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-slate-850);
+      border-radius: 4px;
+    }
+
+    /* Layout Utilities */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* --- PREMIUM HEADER & GOOGLE TRANSLATE CUSTOMIZATION --- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background-color: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-b: 1px solid rgba(30, 41, 59, 0.5);
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .header-wrap {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      height: 40px;
+      width: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent-rose));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: white;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+    }
+
+    .brand-title {
+      font-size: 1.125rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-subtitle {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    .btn-connect {
+      padding: 0.625rem 1.25rem;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: var(--transition-fast);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+    }
+
+    .btn-connect:hover {
+      background-color: var(--primary-hover);
+    }
+
+    /* Language Switcher Container Styling */
+    .lang-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-slate-900);
+      padding: 4px 8px;
+      border-radius: 8px;
+      border: 1px solid var(--bg-slate-850);
+    }
+    
+    /* Hide standard Google Top banner frame after translation */
+    .goog-te-banner-frame { display: none !important; }
+    body { top: 0px !important; }
+    .skiptranslate > iframe { display: none !important; }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      position: relative;
+      padding: 5rem 0 6rem;
+      overflow: hidden;
+    }
+
+    .hero::before, .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 500px;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero::before {
+      top: 10%;
+      left: -10%;
+      background: rgba(99, 102, 241, 0.08);
+    }
+
+    .hero::after {
+      top: 20%;
+      right: -10%;
+      background: rgba(244, 63, 94, 0.08);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      align-self: flex-start;
+      padding: 0.25rem 0.75rem;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 100px;
+      color: #a5b4fc;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #818cf8, #c084fc, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h2 {
+      font-size: 1.35rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 600px;
+    }
+
+    .chip-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-850);
+      padding: 0.375rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .btn-primary-lg {
+      padding: 1rem 1.75rem;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-fast);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.25);
+    }
+
+    .btn-primary-lg:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-secondary-lg {
+      padding: 1rem 1.75rem;
+      background-color: var(--bg-slate-900);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-fast);
+    }
+
+    .btn-secondary-lg:hover {
+      background-color: var(--bg-slate-850);
+    }
+
+    /* Hero Right Visual Art Card */
+    .hero-right-card {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(244, 63, 94, 0.15));
+      padding: 6px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+
+    .mock-screen {
+      background-color: var(--bg-slate-950);
+      border-radius: 20px;
+      padding: 1.5rem;
+      font-size: 0.75rem;
+      border: 1px solid var(--bg-slate-900);
+    }
+
+    .mock-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .mock-box {
+      background-color: rgba(15, 23, 42, 0.8);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--bg-slate-850);
+      margin-bottom: 1rem;
+    }
+
+    .mock-progress {
+      height: 6px;
+      background-color: #1e293b;
+      border-radius: 10px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+    }
+
+    .mock-progress-bar {
+      height: 100%;
+      width: 80%;
+      background-color: var(--primary);
+    }
+
+    .mock-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .mock-grid-item {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid rgba(30, 41, 59, 0.5);
+    }
+
+    .mock-wire {
+      height: 24px;
+      background: var(--bg-slate-900);
+      border: 1px dashed #475569;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mock-path {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-muted);
+    }
+
+    /* --- SECTION STRUCTURES --- */
+    section.py-block {
+      padding: 5rem 0;
+    }
+
+    .bg-muted-block {
+      background-color: rgba(15, 23, 42, 0.3);
+      border-y: 1px solid var(--bg-slate-900);
+    }
+
+    .section-title-wrap {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .section-title-wrap.left {
+      text-align: left;
+      margin-bottom: 0;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-indigo { color: var(--primary); }
+    .tag-rose { color: var(--accent-rose); }
+    .tag-amber { color: var(--accent-amber); }
+
+    /* --- ABOUT SECTION --- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 4rem;
+    }
+
+    .about-experience {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .exp-icon-box {
+      height: 56px;
+      width: 56px;
+      border-radius: 50%;
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-850);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .pillar-card {
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-850);
+      padding: 1rem;
+      border-radius: 12px;
+      transition: var(--transition-smooth);
+    }
+
+    .pillar-card:hover {
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .pillar-card h4 {
+      font-size: 0.875rem;
+      color: white;
+      margin-bottom: 0.25rem;
+    }
+
+    .pillar-card span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* --- SKILLS CARD MODULES --- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .skill-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--bg-slate-850);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .skill-icon {
+      height: 40px;
+      width: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .icon-ind { background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2); color: var(--primary); }
+    .icon-ros { background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.2); color: var(--accent-rose); }
+    .icon-amb { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); color: var(--accent-amber); }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .skill-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* --- CASE STUDIES GRID --- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-850);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+    }
+
+    .project-card:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .project-hero {
+      padding: 2rem;
+      height: 192px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+    }
+
+    /* Gradient Background variants per theme data */
+    .bg-lofio { background: linear-gradient(to bottom right, #312e81, #0f172a); }
+    .bg-travel { background: linear-gradient(to bottom right, #064e3b, #0f172a); }
+    .bg-upside { background: linear-gradient(to bottom right, #4c0519, #0f172a); }
+    .bg-choco { background: linear-gradient(to bottom right, #78350f, #0f172a); }
+
+    .project-tags {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .proj-tag {
+      font-size: 10px;
+      background-color: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.05);
+      color: #cbd5e1;
+    }
+
+    .project-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      gap: 1.5rem;
+    }
+
+    .project-footer {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--bg-slate-850);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-case-action {
+      padding: 0.625rem 1.25rem;
+      background-color: var(--bg-slate-850);
+      color: white;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: var(--transition-fast);
+    }
+
+    .btn-case-action:hover {
+      background-color: var(--primary);
+    }
+
+    /* --- INTERACTIVE PROCESS MODULE --- */
+    .process-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .process-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .process-tab-btn {
+      width: 100%;
+      text-align: left;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--bg-slate-850);
+      background-color: rgba(15, 23, 42, 0.5);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition-fast);
+    }
+
+    .process-tab-btn.active {
+      background-color: rgba(99, 102, 241, 0.1);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .tab-btn-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .tab-num {
+      height: 24px;
+      width: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background-color: var(--bg-slate-850);
+      color: var(--text-muted);
+    }
+
+    .process-tab-btn.active .tab-num {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .process-display-panel {
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-850);
+      border-radius: 16px;
+      padding: 2rem;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .process-panel-icon {
+      height: 40px;
+      width: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .action-box-log {
+      background-color: var(--bg-slate-950);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--bg-slate-850);
+    }
+
+    .action-box-log ul {
+      list-style-position: inside;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    /* --- QUALIFICATIONS CARD --- */
+    .cert-card {
+      max-width: 896px;
+      margin: 3rem auto 0;
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-850);
+      border-radius: 16px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 0.3fr 0.7fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .cert-icon-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .cert-badge-circle {
+      height: 112px;
+      width: 112px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.1);
+      border: 4px solid rgba(99, 102, 241, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .cert-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .cert-badge-pill {
+      align-self: flex-start;
+      padding: 0.25rem 0.5rem;
+      background-color: var(--bg-slate-950);
+      color: #a5b4fc;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 6px;
+    }
+
+    .cert-tags-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .cert-tag-item {
+      font-size: 0.75rem;
+      background-color: var(--bg-slate-950);
+      color: var(--text-muted);
+      padding: 0.25rem 0.625rem;
+      border-radius: 4px;
+      border: 1px solid var(--bg-slate-850);
+    }
+
+    /* --- CONTACT INTERFACE --- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 3rem;
+    }
+
+    .contact-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-card-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background-color: var(--bg-slate-950);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--bg-slate-850);
+    }
+
+    .row-icon-box {
+      height: 40px;
+      width: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-copy-action {
+      padding: 0.375rem 0.75rem;
+      background-color: var(--bg-slate-900);
+      color: var(--text-muted);
+      border: 1px solid var(--bg-slate-850);
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 4px;
+      margin-left: auto;
+    }
+
+    .social-row-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .social-btn-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: var(--bg-slate-950);
+      border: 1px solid var(--bg-slate-850);
+      padding: 0.875rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      transition: var(--transition-fast);
+    }
+
+    .social-btn-link:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Form UI */
+    .contact-form-card {
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-850);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .form-title {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background-color: var(--bg-slate-950);
+      border: 1px solid var(--bg-slate-850);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      color: white;
+      font-family: inherit;
+      font-size: 0.875rem;
+      transition: var(--transition-fast);
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .btn-submit-form {
+      width: 100%;
+      padding: 0.875rem;
+      background-color: var(--primary);
+      color: white;
+      font-weight: 700;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      transition: var(--transition-fast);
+    }
+
+    /* --- FLOATING CHAT SYSTEM --- */
+    .chat-float-wrapper {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 50;
+    }
+
+    .btn-chat-trigger {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.25rem;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transition: var(--transition-fast);
+    }
+
+    .btn-chat-trigger:hover {
+      transform: scale(1.05);
+    }
+
+    .chat-window {
+      width: 400px;
+      height: 500px;
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-800);
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background-color: var(--bg-slate-950);
+      padding: 0.875rem 1rem;
+      border-bottom: 1px solid var(--bg-slate-850);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .status-dot {
+      height: 10px;
+      width: 10px;
+      background-color: var(--accent-emerald);
+      border-radius: 50%;
+    }
+
+    .chat-messages-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      background-color: rgba(2, 6, 23, 0.4);
+      font-size: 0.75rem;
+    }
+
+    .msg-bubble {
+      padding: 0.75rem;
+      border-radius: 12px;
+      max-width: 85%;
+      line-height: 1.5;
+    }
+
+    .msg-bubble.ai {
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-800);
+      color: var(--text-main);
+      align-self: flex-start;
+      border-top-left-radius: 0;
+    }
+
+    .msg-bubble.user {
+      background-color: var(--primary);
+      color: white;
+      align-self: flex-end;
+      border-top-right-radius: 0;
+    }
+
+    .chat-chips-row {
+      padding: 0.5rem;
+      background-color: rgba(2, 6, 23, 0.6);
+      border-top: 1px solid var(--bg-slate-850);
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+    }
+
+    .chat-chip-btn {
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-800);
+      color: #a5b4fc;
+      padding: 0.25rem 0.625rem;
+      border-radius: 6px;
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .chat-input-form {
+      padding: 0.75rem;
+      background-color: var(--bg-slate-900);
+      border-top: 1px solid var(--bg-slate-850);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chat-input-form input {
+      flex: 1;
+      background-color: var(--bg-slate-950);
+      border: 1px solid var(--bg-slate-800);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      color: white;
+      font-size: 0.75rem;
+    }
+
+    .chat-input-form button {
+      padding: 0.5rem;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* --- CASE STUDY DIALOG OVERLAY (MODAL) --- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(2, 6, 23, 0.9);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-box {
+      background-color: var(--bg-slate-900);
+      border: 1px solid var(--bg-slate-800);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 1024px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--bg-slate-850);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-body-content {
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .split-2-col {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+    }
+
+    .split-equal {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .problem-box { background: rgba(220, 38, 38, 0.05); border: 1px solid rgba(220, 38, 38, 0.2); padding: 1.5rem; border-radius: 12px; }
+    .solution-box { background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 1.5rem; border-radius: 12px; }
+
+    .pain-points-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .pain-card {
+      background-color: var(--bg-slate-950);
+      border: 1px solid var(--bg-slate-850);
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+    }
+
+    .actionable-insight-box {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      background-color: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 8px;
+      font-size: 0.75rem;
+      color: #a5b4fc;
+    }
+
+    .mockup-render-preview {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .phone-shell {
+      width: 100%;
+      max-width: 260px;
+      background-color: var(--bg-slate-950);
+      border: 1px solid var(--bg-slate-800);
+      padding: 4px;
+      border-radius: 28px;
+    }
+
+    .phone-screen-inner {
+      border-radius: 24px;
+      padding: 1.25rem;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 0.75rem;
+    }
+
+    .mock-visual-box {
+      height: 96px;
+      background-color: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 9px;
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    .modal-footer {
+      background-color: var(--bg-slate-950);
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--bg-slate-850);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background-color: var(--bg-slate-950);
+      border-top: 1px solid var(--bg-slate-900);
+      padding: 3rem 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .footer-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .footer-links button:hover {
+      color: white;
+    }
+
+    /* --- RESPONSIVE MEDIA BREAKPOINTS --- */
+    @media (max-width: 1024px) {
+      .hero-grid, .about-grid, .process-grid, .contact-grid, .cert-card {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .hero h1 { font-size: 2.75rem; }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid, .projects-grid, .split-2-col, .split-equal, .pain-points-row {
+        grid-template-columns: 1fr;
+      }
+      nav, .brand-subtitle { display: none; }
+      .chat-window { width: calc(100vw - 2rem); right: 1rem; }
+    }
+  </style>
 </head>
 <body>
-  
-  <header class="Navbar">
-    <div class="logo">Lofio</div>
-    <nav class="nav">
-      <a href="home.html">Home</a>
-      <a href="skill.html">Skills</a>
-      <a href="project.html">Project</a>
-      <a href="Process.html">Process</a>
-      <a href="Certifications.html">Certifications</a>
-    </nav>
-    <button class="login">Let's Connect</button>
+
+  <header>
+    <div class="container header-wrap">
+      <div class="brand" onclick="scrollToSection('hero')">
+        <div class="brand-logo">AF</div>
+        <div>
+          <span class="brand-title">AJMIN FAYAZ</span>
+          <span class="brand-subtitle">UI/UX DESIGNER</span>
+        </div>
+      </div>
+
+      <nav>
+        <button onclick="scrollToSection('about')" class="nav-link">About</button>
+        <button onclick="scrollToSection('skills')" class="nav-link">Skills</button>
+        <button onclick="scrollToSection('projects')" class="nav-link">Projects</button>
+        <button onclick="scrollToSection('process')" class="nav-link">Process</button>
+        <button onclick="scrollToSection('certifications')" class="nav-link">Certifications</button>
+        
+        <div class="lang-container">
+          <i data-lucide="globe" style="width:14px; color:#818cf8;"></i>
+          <div id="google_translate_element"></div>
+        </div>
+
+        <button onclick="scrollToSection('contact')" class="btn-connect">Let's Connect</button>
+      </nav>
+    </div>
   </header>
-  
-  <main class="hero">
-    
-    <div class="conent">
-      <h1>Designing intuitive digital experiences that solve real user problems through research, usability, and modern interface design.</h1>
-      <p>Self-driven UI/UX Designer specialized in building robust interfaces using Figma. Transforming high-level, complex business constraints into seamless product flows.</p>
-      <button>Google Certified UX Designer</button>
-      <button class="button">Connect</button>
-    
-    
-  </main>
-  
+
+  <section id="hero" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <div class="badge-status">
+          <i data-lucide="sparkles" style="width:14px;"></i>
+          <span>Available for UI/UX Opportunities</span>
+        </div>
+        <h1>Hi, I'm <span class="gradient-text">Ajmin Fayaz</span></h1>
+        <h2>Designing intuitive digital experiences that solve real user problems through research, usability, and modern interface design.</h2>
+        <p>Self-driven UI/UX Designer specialized in building robust interfaces using Figma. Transforming high-level, complex business constraints into seamless product flows.</p>
+        
+        <div class="chip-container">
+          <div class="chip"><i data-lucide="map-pin" style="color:var(--primary); width:14px;"></i><span>Kerala, India</span></div>
+          <div class="chip"><i data-lucide="mail" style="color:var(--accent-rose); width:14px;"></i><span>fayazajmin@gmail.com</span></div>
+          <div class="chip"><i data-lucide="award" style="color:var(--accent-amber); width:14px;"></i><span>Google Certified UX Designer</span></div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn-primary-lg" onclick="scrollToSection('projects')">
+            <span>Explore Case Studies</span>
+            <i data-lucide="arrow-right" style="width:18px;"></i>
+          </button>
+          <button class="btn-secondary-lg" onclick="toggleChat(true)">
+            <i data-lucide="sparkles" style="width:18px;"></i>
+            <span>Talk with my AI Agent</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-right-card">
+          <div class="mock-screen">
+            <div class="mock-nav">
+              <span style="font-weight:800; color:white;">AJ.DESIGN</span>
+              <div>✨</div>
+            </div>
+            <div class="mock-box">
+              <span style="color:var(--text-muted); font-size:10px; font-weight:700; display:block; margin-bottom:4px;">DESIGN PHILOSOPHY</span>
+              <p style="color:white; font-size:14px; font-weight:600;">Simplicity is a resolved complexity.</p>
+              <div class="mock-progress"><div class="mock-progress-bar"></div></div>
+            </div>
+            <div class="mock-grid">
+              <div class="mock-grid-item">
+                <div style="height:8px; width:50%; background:#334155; border-radius:4px;"></div>
+                <div class="mock-wire"><i data-lucide="layers" style="width:12px; color:var(--primary);"></i></div>
+              </div>
+              <div class="mock-grid-item">
+                <div style="height:8px; width:75%; background:#334155; border-radius:4px;"></div>
+                <div class="mock-wire"><i data-lucide="compass" style="width:12px; color:var(--accent-rose);"></i></div>
+              </div>
+            </div>
+            <div class="mock-box" style="margin-bottom:0;">
+              <span style="color:var(--text-muted); font-size:9px; font-weight:700; display:block; margin-bottom:6px;">ACTIVE USER PATH</span>
+              <div class="mock-path">
+                <span>Search</span> <i data-lucide="chevron-right" style="width:10px;"></i>
+                <span style="color:var(--primary); font-weight:700;">Compare</span> <i data-lucide="chevron-right" style="width:10px;"></i>
+                <span>Checkout</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-block bg-muted-block">
+    <div class="container about-grid">
+      <div>
+        <span class="section-tag tag-indigo">Professional Journey</span>
+        <h2>About Me</h2>
+        <p style="color:var(--text-muted); font-size:0.875rem; margin-top:1rem;">Based out of beautiful Kerala, India, I bring global user experience perspectives paired with native aesthetic precision.</p>
+        <div class="about-experience">
+          <div class="exp-icon-box"><i data-lucide="award" style="width:24px;"></i></div>
+          <div>
+            <span style="display:block; font-weight:700; color:white; font-size:0.875rem;">2+ Years Active Experience</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">Self-driven UX design and exploration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <p style="font-size:1.125rem;">I'm a UI/UX Designer dedicated to formulating user-centered digital products using <strong style="color:var(--primary);">Figma</strong>. My ultimate design focus is on transforming high-density, complex workflows into streamlined, satisfying, and visual interfaces.</p>
+        <p style="color:var(--text-muted); font-size:0.875rem;">I enjoy mapping detailed scenarios that balance immediate business milestones with authentic customer comfort. Through thorough user interviews, layout design systems, and rigorous validation tests, I ensure every pixel placed serves a concrete utility.</p>
+        
+        <div class="pillars-grid">
+          <div class="pillar-card"><h4>User Research</h4><span>Understanding motivations</span></div>
+          <div class="pillar-card"><h4>Information Architecture</h4><span>Constructing logical paths</span></div>
+          <div class="pillar-card"><h4>Visual Design</h4><span>Hierarchy & aesthetics</span></div>
+          <div class="pillar-card"><h4>Wireframing</h4><span>Blueprint blueprints</span></div>
+          <div class="pillar-card"><h4>Design Systems</h4><span>Scalable UI patterns</span></div>
+          <div class="pillar-card"><h4>Usability Testing</h4><span>Human interactions</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="py-block">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-tag tag-rose">My Toolkit</span>
+        <h2>Skills & Competences</h2>
+        <p style="color:var(--text-muted); font-size:0.875rem; margin-top:0.5rem;">Harnessed to construct scalable layouts, fluid wireframes, and secure user research documents.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon icon-ind"><i data-lucide="search" style="width:20px;"></i></div>
+          <h3 style="font-size:1.125rem; margin-bottom:1rem; color:white;">UX Design</h3>
+          <ul class="skill-list">
+            <li><i data-lucide="check-circle-2" style="color:var(--primary); width:14px;"></i>User Research & Interviews</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--primary); width:14px;"></i>User Personas & Scenarios</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--primary); width:14px;"></i>User Journey Mapping</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--primary); width:14px;"></i>Information Architecture</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--primary); width:14px;"></i>Usability Testing</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon icon-ros"><i data-lucide="pen-tool" style="width:20px;"></i></div>
+          <h3 style="font-size:1.125rem; margin-bottom:1rem; color:white;">UI Design</h3>
+          <ul class="skill-list">
+            <li><i data-lucide="check-circle-2" style="color:var(--accent-rose); width:14px;"></i>Wireframing (Lo-Fi to Hi-Fi)</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--accent-rose); width:14px;"></i>Design Systems Setup</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--accent-rose); width:14px;"></i>Responsive & Adaptive</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--accent-rose); width:14px;"></i>Accessibility Compliance</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--accent-rose); width:14px;"></i>High-Fidelity Prototyping</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon icon-amb"><i data-lucide="settings" style="width:20px;"></i></div>
+          <h3 style="font-size:1.125rem; margin-bottom:1rem; color:white;">Software Tools</h3>
+          <ul class="skill-list">
+            <li><i data-lucide="check-circle-2" style="color:var(--accent-amber); width:14px;"></i>Figma (Auto-Layout)</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--accent-amber); width:14px;"></i>FigJam Brainstorming</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--accent-amber); width:14px;"></i>Google Workspace</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--accent-amber); width:14px;"></i>ChatGPT UI Strategy</li>
+            <li><i data-lucide="check-circle-2" style="color:var(--accent-amber); width:14px;"></i>Canva Concept Design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="py-block bg-muted-block">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-tag tag-indigo">My Showcase</span>
+        <h2>Featured Case Studies</h2>
+        <p style="color:var(--text-muted); font-size:0.875rem; margin-top:0.5rem;">Explore structured design frameworks. Open case study logs to explore production research records.</p>
+      </div>
+
+      <div class="projects-grid" id="projectsContainer">
+        </div>
+    </div>
+  </section>
+
+  <section id="process" class="py-block">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-tag tag-rose">My Framework</span>
+        <h2>How I Design</h2>
+        <p style="color:var(--text-muted); font-size:0.875rem; margin-top:0.5rem;">An iterative approach centering closely on empathy, user validation, and visual parameters.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-nav-list">
+          <button class="process-tab-btn active" onclick="switchProcessStep(0)">
+            <div class="tab-btn-left"><div class="tab-num">1</div><div><span style="display:block; font-weight:700; font-size:14px; color:white;">1. Discover</span><span style="font-size:11px;">Understand</span></div></div>
+            <i data-lucide="chevron-right" style="width:16px;"></i>
+          </button>
+          <button class="process-tab-btn" onclick="switchProcessStep(1)">
+            <div class="tab-btn-left"><div class="tab-num">2</div><div><span style="display:block; font-weight:700; font-size:14px; color:white;">2. Define</span><span style="font-size:11px;">Synthesize</span></div></div>
+            <i data-lucide="chevron-right" style="width:16px;"></i>
+          </button>
+          <button class="process-tab-btn" onclick="switchProcessStep(2)">
+            <div class="tab-btn-left"><div class="tab-num">3</div><div><span style="display:block; font-weight:700; font-size:14px; color:white;">3. Ideate</span><span style="font-size:11px;">Explore</span></div></div>
+            <i data-lucide="chevron-right" style="width:16px;"></i>
+          </button>
+          <button class="process-tab-btn" onclick="switchProcessStep(3)">
+            <div class="tab-btn-left"><div class="tab-num">4</div><div><span style="display:block; font-weight:700; font-size:14px; color:white;">4. Design</span><span style="font-size:11px;">Craft</span></div></div>
+            <i data-lucide="chevron-right" style="width:16px;"></i>
+          </button>
+          <button class="process-tab-btn" onclick="switchProcessStep(4)">
+            <div class="tab-btn-left"><div class="tab-num">5</div><div><span style="display:block; font-weight:700; font-size:14px; color:white;">5. Prototype</span><span style="font-size:11px;">Simulate</span></div></div>
+            <i data-lucide="chevron-right" style="width:16px;"></i>
+          </button>
+          <button class="process-tab-btn" onclick="switchProcessStep(5)">
+            <div class="tab-btn-left"><div class="tab-num">6</div><div><span style="display:block; font-weight:700; font-size:14px; color:white;">6. Validate</span><span style="font-size:11px;">Iterate</span></div></div>
+            <i data-lucide="chevron-right" style="width:16px;"></i>
+          </button>
+        </div>
+
+        <div class="process-display-panel" id="processDisplay">
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" class="py-block bg-muted-block">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-tag tag-amber">Qualifications</span>
+        <h2>Education & Certification</h2>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon-container">
+          <div class="cert-badge-circle"><i data-lucide="award" style="width:48px;"></i></div>
+        </div>
+        <div class="cert-body">
+          <span class="cert-badge-pill">COURSERA SPECIALIZATION</span>
+          <h3 style="color:white; font-size:1.5rem;">Google UX Design Professional Certificate</h3>
+          <p style="color:var(--text-muted); font-size:0.875rem;">This rigorous, multi-course certification covers all facets of the end-to-end design lifecycle, including conducting empathetic research, prototyping in Figma, and designing for web and mobile platforms.</p>
+          <div class="cert-tags-wrap">
+            <span class="cert-tag-item">UX Foundations</span>
+            <span class="cert-tag-item">User Research</span>
+            <span class="cert-tag-item">Wireframing</span>
+            <span class="cert-tag-item">Prototyping</span>
+            <span class="cert-tag-item">Responsive Design</span>
+            <span class="cert-tag-item">Design Systems</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-block">
+    <div class="container contact-grid">
+      <div class="contact-left">
+        <div>
+          <span class="section-tag tag-indigo">Available Now</span>
+          <h2>Let's Connect</h2>
+          <p style="color:var(--text-muted); font-size:0.875rem; margin-top:0.5rem;">I'm actively seeking UI/UX Design opportunities, contract roles, and full-time positions. Open to relocation or remote infrastructure setup.</p>
+        </div>
+
+        <div class="contact-card-row">
+          <div class="row-icon-box" style="background:rgba(99,102,241,0.1); color:var(--primary);"><i data-lucide="mail" style="width:18px;"></i></div>
+          <div>
+            <span style="font-size:10px; color:var(--text-muted); display:block; font-weight:800;">SEND AN EMAIL</span>
+            <span style="font-size:14px; font-weight:600; color:white;">fayazajmin@gmail.com</span>
+          </div>
+          <button class="btn-copy-action" onclick="copyEmailAddress(this)">Copy</button>
+        </div>
+
+        <div class="contact-card-row">
+          <div class="row-icon-box" style="background:rgba(244,63,94,0.1); color:var(--accent-rose);"><i data-lucide="phone" style="width:18px;"></i></div>
+          <div>
+            <span style="font-size:10px; color:var(--text-muted); display:block; font-weight:800;">CALL / WHATSAPP</span>
+            <span style="font-size:14px; font-weight:600; color:white;">+91 8089449893</span>
+          </div>
+        </div>
+
+        <div class="social-row-grid">
+          <a href="https://www.linkedin.com/in/ajmin-fayaz" target="_blank" class="social-btn-link"><i data-lucide="linkedin" style="width:16px;"></i><span>LinkedIn Profile</span></a>
+          <a href="https://beha-af.github.io/AJMINFAYAZ.DESIGN/" target="_blank" class="social-btn-link"><i data-lucide="globe" style="width:16px;"></i><span>Behance Site</span></a>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <h3 class="form-title">Send a Quick Message</h3>
+        <form onsubmit="handleFormSubmission(event)">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" id="formName" required placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" required placeholder="jane@example.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="formMessage" rows="4" required placeholder="Describe your design metrics, opportunity details..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit-form">Send Message & Launch AI Dialog</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="chat-float-wrapper">
+    <button class="btn-chat-trigger" id="chatTrigger" onclick="toggleChat(true)">
+      <i data-lucide="sparkles" style="width:20px;"></i>
+      <span>Ask Ajmin's AI</span>
+    </button>
+
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <div class="status-dot"></div>
+          <div>
+            <span style="font-weight:800; font-size:12px; color:white; display:block;">AJMIN'S UX BOT</span>
+            <span style="font-size:10px; color:var(--text-muted);">Powered by Gemini Engine</span>
+          </div>
+        </div>
+        <button onclick="toggleChat(false)" style="color:var(--text-muted);"><i data-lucide="x" style="width:16px;"></i></button>
+      </div>
+
+      <div class="chat-messages-area" id="chatMessages">
+        <div class="msg-bubble ai">Hi! I'm Ajmin's AI Portfolio Assistant, powered by Gemini. You can ask me about Ajmin's project details, core skills, UI/UX philosophy, or ask me to perform a mock design interview with you. What would you like to know?</div>
+      </div>
+
+      <div class="chat-chips-row">
+        <button class="chat-chip-btn" onclick="applySuggestion('Tell me about LOFIO')">Tell me about LOFIO</button>
+        <button class="chat-chip-btn" onclick="applySuggestion('What is Ajmin\'s design process?')">What is Ajmin's design process?</button>
+        <button class="chat-chip-btn" onclick="applySuggestion('Do a mock UI/UX interview')">Do a mock UI/UX interview</button>
+      </div>
+
+      <form class="chat-input-form" onsubmit="submitChatMessage(event)">
+        <input type="text" id="chatInput" placeholder="Ask about my UX designs...">
+        <button type="submit"><i data-lucide="send" style="width:14px;"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="caseModal">
+    <div class="modal-box" id="modalBoxTarget">
+      </div>
+  </div>
+
+  <footer>
+    <div class="container footer-wrap">
+      <span style="font-weight:800; color:white; letter-spacing:0.05em;">AJMIN FAYAZ • UI/UX DESIGNER</span>
+      <p style="max-width:500px; margin:0 auto;">Crafting beautiful digital tools that keep human-centered experiences at their absolute core.</p>
+      <div class="footer-links">
+        <button onclick="scrollToSection('about')">About</button>
+        <button onclick="scrollToSection('skills')">Skills</button>
+        <button onclick="scrollToSection('projects')">Projects</button>
+        <button onclick="scrollToSection('contact')">Contact</button>
+      </div>
+      <div style="border-top:1px solid var(--bg-slate-900); padding-top:1.5rem; margin-top:1rem; font-size:11px;">
+        <span>&copy; 2026 Ajmin Fayaz. Designed & Developed in Kerala, India.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    // System Data Matrix
+    const projectsData = [
+      {
+        id: "lofio",
+        title: "LOFIO",
+        subtitle: "Premium Real Estate Platform",
+        category: "Mobile & Web App",
+        heroBg: "bg-lofio",
+        accentColor: "var(--primary)",
+        tags: ["Real Estate", "Trust & Transparency", "UI/UX Case Study"],
+        overview: "LOFIO is a modern real estate platform designed to create trust and transparency between buyers, sellers, and agents.",
+        problem: "Many property platforms lack verified listings and agent details, making the search stressful and insecure for first-time buyers who fear scams and bait-and-switch pricing.",
+        solution: "Designed a streamlined application that highlights verified properties, badge systems for transparent agents, embedded virtual tours to minimize physical travel, and secure, encrypted smart escrow payments.",
+        role: "UX Research, User Flow Design, Wireframing, UI Design, Prototyping",
+        keyOutcome: "Created a premium, high-trust experience reducing overall property research-to-booking time while maximizing user confidence during large transactions.",
+        research: {
+          methodology: "Conducted 8 user interviews and sent a survey to 50 prospective homebuyers aged 25-45.",
+          painPoints: [
+            "Hidden fees and outdated price estimates.",
+            "Unreliable brokers who post fake/unavailable properties.",
+            "Wasting weekends visiting apartments that don't match pictures."
+          ],
+          insights: "Trust is the #1 decision driver. Visual proof (like certified walkthroughs) increases booking rates by 67%."
+        },
+        wireframes: [
+          { title: "Home Search Desk", elements: ["Global Search Box", "Quick Verified Badges", "Map View Toggle", "Featured Properties Grid"] },
+          { title: "Property Detail View", elements: ["3D Virtual Tour Window", "Agent Verify Badge", "Price Breakdown", "Book Viewing Button"] }
+        ],
+        mockupColor: "background-color: #030712;",
+        mockupElements: { header: "LOFIO Premium", title: "Penthouse at Marine Drive", price: "$1.2M", badge: "Verified Broker" }
+      },
+      {
+        id: "travel",
+        title: "Travel Booking Platform",
+        subtitle: "All-in-One Travel Ecosystem",
+        category: "Cross-Platform App",
+        heroBg: "bg-travel",
+        accentColor: "var(--accent-emerald)",
+        tags: ["Travel & Leisure", "Smart Filters", "Unified Booking"],
+        overview: "A complete travel booking ecosystem that allows users to search, compare, and book flights and hotels from a single, cohesive user interface.",
+        problem: "Travel booking often feels fragmented. Users typically switch between 3 to 4 distinct tabs or apps to bundle flights, hotels, and local itineraries, resulting in cognitive overload and lost booking progress.",
+        solution: "Created a unified dashboard and reservation system featuring seamless transition states, predictive unified search, smart bundled discount recommendations, and simplified payment procedures.",
+        role: "UX Design, UI Design, User Flow Mapping, Interactive Prototyping",
+        keyOutcome: "Reduced typical booking flow abandonment by 35% and drastically simplified the complex multi-item checkout funnel into an intuitive 3-step action.",
+        research: {
+          methodology: "Competitor analysis of Expedia, Airbnb, and Booking.com, combined with task-flow mapping for 10 heavy travelers.",
+          painPoints: [
+            "Confusing and deceptive check-out fees shown at the very end.",
+            "Hard to synchronize flight arrival times with hotel check-in times.",
+            "Complex cancellation policies hidden behind fine print."
+          ],
+          insights: "Travelers prefer unified checkout options over micro-savings. Visualizing travel timelines dramatically decreases planning anxiety."
+        },
+        wireframes: [
+          { title: "Search Results Grid", elements: ["Multi-city filter panel", "Package bundles cards", "Sorted by Overall Convenience Index"] },
+          { title: "Booking Confirmation", elements: ["Timeline-based receipt", "Add to Calendar integration", "Interactive Seat Selector"] }
+        ],
+        mockupColor: "background-color: #022c22;",
+        mockupElements: { header: "TravelEase Unified", title: "Kerala Backwaters & Stay", price: "$450 / package", badge: "Best Value" }
+      },
+      {
+        id: "upside",
+        title: "Upside",
+        subtitle: "Unified Entertainment Hub",
+        category: "Entertainment App",
+        heroBg: "bg-upside",
+        accentColor: "var(--accent-rose)",
+        tags: ["Entertainment", "Unified Ecosystem", "Ticketing"],
+        overview: "Upside is an all-in-one entertainment platform that combines movie discovery, theatre booking, OTT contents, and snack ordering.",
+        problem: "Users are forced to navigate multiple apps: BookMyShow for tickets, Swiggy for cinema snacks, and separate stream apps to discover where to watch content, fracturing the night-out experience.",
+        solution: "Designed an all-inclusive 'Entertainment Hub' that bridges offline cinema events (booking, seating, snack ordering for direct-to-seat delivery) and online content discovery.",
+        role: "Product Design, UX Research, Interface Design, Prototype Development",
+        keyOutcome: "Streamlined the leisure experience, letting users purchase their theater seats and preorder snacks simultaneously, which boosted average concession sales by 40% in our UX mock testing.",
+        research: {
+          methodology: "User journey mapping of young adults (ages 18-35) during weekend entertainment planning.",
+          painPoints: [
+            "Long food concession lines in theaters.",
+            "Forgetting which streaming service holds the license for a movie.",
+            "Inability to split ticket costs with friends directly in the interface."
+          ],
+          insights: "Pre-ordering snacks with ticket purchase is highly desirable if transparency on preparation timing is displayed."
+        },
+        wireframes: [
+          { title: "Unified Movie Page", elements: ["Streaming locations list", "Local cinema schedule picker", "IMDb & User Reviews integration"] },
+          { title: "Snack Customizer", elements: ["Snack carousel slider", "Combo deal selector", "Seat delivery indicator toggle"] }
+        ],
+        mockupColor: "background-color: #4c0519;",
+        mockupElements: { header: "Upside Hub", title: "Dune: Part Three (IMAX)", price: "$18.50 + Popcorn", badge: "Row H • Seat 14" }
+      },
+      {
+        id: "choco-box",
+        title: "Choco Box",
+        subtitle: "Cake Customization Platform",
+        category: "E-Commerce App",
+        heroBg: "bg-choco",
+        accentColor: "var(--accent-amber)",
+        tags: ["E-Commerce", "Personalization", "Interactive UI"],
+        overview: "A premium cake-ordering experience focused on personalization, dietary transparency, and interactive configuration.",
+        problem: "Ordering custom cakes online is notoriously error-prone. Customers struggle to describe visual layouts, choose correct sizes, and identify hidden allergy-inducing ingredients.",
+        solution: "Designed an interactive 3D step-by-step customizer allowing users to choose layers, fillings, colors, and toppers while immediately displaying nutritional profiles, allergen warnings, and weight estimations.",
+        role: "UX Design, UI Design, User Flow Creation, Interactive Prototyping",
+        keyOutcome: "Established a delightful, worry-free checkout pipeline that increased purchase confidence for users ordering for sensitive occasions or with dietary limits.",
+        research: {
+          methodology: "Interviewed local bakers and 15 custom cake buyers, conducting cognitive walk-through sessions.",
+          painPoints: [
+            "Uncertainty about final design appearance.",
+            "Difficulties in selecting accurate cake sizes for guest counts.",
+            "Anxiety regarding gluten, dairy, or nut allergens for family events."
+          ],
+          insights: "Customers are willing to pay up to 30% premium if they have absolute visual control and transparency over cake components."
+        },
+        wireframes: [
+          { title: "Cake Customizer Studio", elements: ["3D/2D Layer Configurator", "Live Ingredient Deck", "Total Price Indicator", "Serving Size Calculator"] },
+          { title: "Allergen Summary Card", elements: ["Interactive safety badges", "Detailed alternative ingredient choices", "Baker warning log"] }
+        ],
+        mockupColor: "background-color: #451a03;",
+        mockupElements: { header: "Choco Box Custom", title: "Three-Tier Double Choco", price: "$85.00", badge: "Gluten-Free Selected" }
+      }
+    ];
+
+    const processData = [
+      { h: "1. Discover Phase", p: "UX design cannot begin without complete user understanding. In this stage, I identify immediate target user groups, carry out structured user interviews, and detail comprehensive competitor matrices.", c: "var(--primary)", i: "search", items: ["Draft target user interview survey sheets", "Run SWOT analysis on primary competitors", "Extract real-world friction insights"] },
+      { h: "2. Define Phase", p: "Taking raw data from interviews, I build concrete user personas and visual maps representation. We define clear task goals and identify specific visual opportunities.", c: "var(--accent-rose)", i: "layers", items: ["Construct distinct target user personas", "Map User Journeys (current vs. ideal states)", "Establish key product feature constraints"] },
+      { h: "3. Ideate Phase", p: "Using tools like FigJam, I rapidly generate alternative layout solutions. We sketch low-fidelity wireframes to quickly evaluate the user's focus on information hierarchies before committing to design details.", c: "var(--accent-amber)", i: "pen-tool", items: ["Draft paper layouts and sketches", "Arrange core application site hierarchies", "Deliver rapid wireframes for concept validation"] },
+      { h: "4. Design Phase", p: "This is where the product comes to life visually. I create clean layout designs adhering closely to contemporary principles (white space, contrast, readability). I also build reusable component libraries and Design Systems.", c: "var(--accent-emerald)", i: "layout", items: ["Develop modular component-based Design Systems", "Refining grids, layout spacing, and WCAG color contrasts", "Produce comprehensive high-fidelity interface screens"] },
+      { h: "5. Prototype Phase", p: "I build clickable mockups in Figma, setting up interactive buttons, transition states, and micro-interactions. This lets users experience the final product flow in real-time.", c: "#3b82f6", i: "smartphone", items: ["Connect screens using Figma flow logic", "Add micro-interactions (hover, focus states, animations)", "Generate live-demo web layouts for user evaluation"] },
+      { h: "6. Validate Phase", p: "The design is refined through structured feedback. I run usability testing sessions with actual users, identify drop-off points, and iterate on designs to reach optimal outcomes.", c: "#a855f7", i: "check-circle-2", items: ["Run standard task-completion UX evaluations", "Synthesize metrics into actionable development notes", "Continuously refine components and system documentation"] }
+    ];
+
+    // Initialize Layout Components
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProjectsGrid();
+      switchProcessStep(0);
+      lucide.createIcons();
+    });
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function renderProjectsGrid() {
+      const container = document.getElementById("projectsContainer");
+      container.innerHTML = projectsData.map((p, idx) => `
+        <div class="project-card">
+          <div class="project-hero ${p.heroBg}">
+            <div class="project-tags">${p.tags.map(t => `<span class="proj-tag">${t}</span>`).join('')}</div>
+            <div>
+              <span style="font-size:10px; font-weight:800; opacity:0.7; display:block; margin-bottom:4px; color:white;">PROJECT 0${idx+1}</span>
+              <h3 style="color:white; font-size:1.5rem;">${p.title}</h3>
+            </div>
+          </div>
+          <div class="project-body">
+            <div>
+              <span style="color:var(--primary); font-size:0.75rem; font-weight:700; display:block; margin-bottom:4px;">${p.subtitle}</span>
+              <p style="color:var(--text-muted); font-size:0.875rem;">${p.overview}</p>
+            </div>
+            <div class="project-footer">
+              <div style="font-size:0.75rem; color:var(--text-muted);">
+                <span style="display:block; font-weight:700; color:#cbd5e1;">My Role:</span>
+                <span>${p.role.split(', ').slice(0,2).join(', ')}...</span>
+              </div>
+              <button class="btn-case-action" onclick="openCaseModal('${p.id}')">
+                <span>View Case Study</span>
+                <i data-lucide="arrow-right" style="width:12px;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function switchProcessStep(idx) {
+      const btns = document.querySelectorAll(".process-tab-btn");
+      btns.forEach((b, i) => b.classList.toggle("active", i === idx));
+      
+      const data = processData[idx];
+      const target = document.getElementById("processDisplay");
+      target.innerHTML = `
+        <div class="process-panel-icon" style="background:${data.c}20; color:${data.c}; border:1px solid ${data.c}40">
+          <i data-lucide="${data.i}"></i>
+        </div>
+        <h3 style="color:white; font-size:1.25rem;">${data.h}</h3>
+        <p style="color:var(--text-muted); font-size:0.875rem;">${data.p}</p>
+        <div class="action-box-log">
+          <span style="color:${data.c}; font-size:11px; font-weight:700; display:block;">ACTION ITEMS:</span>
+          <ul>${data.items.map(li => `<li>${li}</li>`).join('')}</ul>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    // Modal Manager
+    function openCaseModal(id) {
+      const p = projectsData.find(proj => proj.id === id);
+      const target = document.getElementById("modalBoxTarget");
+      
+      target.innerHTML = `
+        <div class="modal-header">
+          <div>
+            <span style="color:var(--primary); font-size:11px; font-weight:800; display:block; letter-spacing:0.1em;">CASE STUDY</span>
+            <h3 style="color:white; font-size:1.25rem;">${p.title}</h3>
+          </div>
+          <button onclick="closeCaseModal()" style="color:var(--text-muted);"><i data-lucide="x" style="width:20px;"></i></button>
+        </div>
+        <div class="modal-body-content">
+          <div class="split-2-col">
+            <div>
+              <h4 style="color:white; font-size:1.125rem; margin-bottom:0.5rem;">Overview</h4>
+              <p style="color:var(--text-muted); font-size:0.875rem;">${p.overview}</p>
+            </div>
+            <div style="background:var(--bg-slate-950); padding:1rem; border-radius:12px; border:1px solid var(--bg-slate-850); font-size:0.75rem;">
+              <div style="margin-bottom:0.75rem;"><span style="color:var(--primary); font-weight:800; display:block;">MY ROLE</span><span style="color:#cbd5e1;">${p.role}</span></div>
+              <div><span style="color:var(--primary); font-weight:800; display:block;">GOALS</span><span style="color:#cbd5e1;">${p.subtitle}</span></div>
+            </div>
+          </div>
+
+          <div class="split-equal">
+            <div class="problem-box">
+              <span style="color:#f87171; font-size:11px; font-weight:800; display:block; margin-bottom:0.5rem;">THE USER PROBLEM</span>
+              <p style="color:var(--text-main); font-size:0.875rem;">${p.problem}</p>
+            </div>
+            <div class="solution-box">
+              <span style="color:#34d399; font-size:11px; font-weight:800; display:block; margin-bottom:0.5rem;">PROPOSED UX SOLUTION</span>
+              <p style="color:var(--text-main); font-size:0.875rem;">${p.solution}</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 style="color:white; font-size:1.125rem;">1. User Research & Insights</h4>
+            <div style="background:var(--bg-slate-950); border:1px solid var(--bg-slate-850); padding:1.25rem; border-radius:12px; margin-top:0.75rem;">
+              <span style="color:var(--primary); font-size:11px; font-weight:800; display:block;">METHODOLOGY</span>
+              <p style="font-size:0.875rem; color:var(--text-main); margin-bottom:1rem;">${p.research.methodology}</p>
+              <span style="color:var(--accent-rose); font-size:11px; font-weight:800; display:block; margin-bottom:0.5rem;">IDENTIFIED USER PAIN POINTS</span>
+              <div class="pain-points-row">${p.research.painPoints.map((pt, i) => `<div class="pain-card"><b style="color:var(--accent-rose); display:block; margin-bottom:2px;">Pain Point 0${i+1}:</b>${pt}</div>`).join('')}</div>
+              <div class="actionable-insight-box"><b>Key Actionable Insight:</b> "${p.research.insights}"</div>
+            </div>
+          </div>
+
+          <div class="split-equal">
+            ${p.wireframes.map(wf => `
+              <div style="background:var(--bg-slate-950); padding:1.25rem; border-radius:12px; border:1px solid var(--bg-slate-850); font-size:0.75rem;">
+                <span style="color:var(--primary); font-weight:800; display:block; margin-bottom:0.75rem;">${wf.title} Blueprint</span>
+                <div style="border:1px dashed #334155; padding:0.75rem; background:rgba(15,23,42,0.5); border-radius:8px; display:flex; flex-direction:column; gap:0.5rem;">
+                  ${wf.elements.map(el => `<div style="background:var(--bg-slate-950); padding:0.5rem; border-radius:4px; border:1px solid var(--bg-slate-850); color:var(--text-muted); display:flex; align-items:center; gap:0.5rem;"><div style="height:6px; width:6px; background:#475569; border-radius:50%;"></div>${el}</div>`).join('')}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          <div>
+            <h4 style="color:white; font-size:1.125rem;">2. High-Fidelity UI Screen Simulator</h4>
+            <div class="split-2-col" style="margin-top:1rem; align-items:center;">
+              <div class="mockup-render-preview">
+                <div class="phone-shell">
+                  <div class="phone-screen-inner" style="${p.mockupColor}">
+                    <div style="display:flex; justify-content:between; width:100%;">
+                      <span style="font-weight:800; font-size:9px; opacity:0.8; flex:1;">${p.mockupElements.header}</span>
+                      <span style="background:rgba(255,255,255,0.15); padding:2px 4px; border-radius:4px; font-size:7px;">${p.mockupElements.badge}</span>
+                    </div>
+                    <div class="mock-visual-box">[ Visual Mockup Interactive Framework Content ]</div>
+                    <div>
+                      <h5 style="color:white; font-size:12px; margin-bottom:2px;">${p.mockupElements.title}</h5>
+                      <span style="color:#a5b4fc; font-weight:700;">${p.mockupElements.price}</span>
+                    </div>
+                    <button style="width:100%; padding:0.5rem; background:white; color:black; font-weight:800; border-radius:6px; font-size:10px;">Book / Inquire Now</button>
+                  </div>
+                </div>
+              </div>
+              <div style="font-size:0.875rem; color:var(--text-muted); display:flex; flex-direction:column; gap:1rem;">
+                <div style="display:flex; align-items:center; gap:0.5rem; color:var(--accent-emerald); font-weight:700;">
+                  <i data-lucide="check-circle-2" style="width:16px;"></i><span>Completed Prototype Status: Active Figma Mock</span>
+                </div>
+                <p>This layout structure models the definitive user evaluation setup. During interactive tasks assessments, target user groupings met task expectations successfully without explicit prior documentation.</p>
+                <div style="background:var(--bg-slate-950); padding:1rem; border-radius:8px; border:1px solid var(--bg-slate-850); font-size:0.75rem;">
+                  <span style="font-weight:800; color:white; display:block; margin-bottom:2px;">KEY DELIVERABLE OUTCOME:</span>
+                  <p>${p.keyOutcome}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <span>All rights reserved &copy; Ajmin Fayaz 2026</span>
+          <button onclick="closeCaseModal()" style="color:var(--primary); font-weight:700;">Close Case Study</button>
+        </div>
+      `;
+      
+      document.getElementById("caseModal").style.display = "flex";
+      document.body.style.overflow = "hidden";
+      lucide.createIcons();
+    }
+
+    function closeCaseModal() {
+      document.getElementById("caseModal").style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+
+    // Interaction Functions
+    function copyEmailAddress(btn) {
+      navigator.clipboard.writeText("fayazajmin@gmail.com");
+      btn.innerText = "Copied!";
+      setTimeout(() => btn.innerText = "Copy", 2000);
+    }
+
+    function toggleChat(open) {
+      document.getElementById("chatWindow").style.display = open ? "flex" : "none";
+      document.getElementById("chatTrigger").style.display = open ? "none" : "flex";
+    }
+
+    function applySuggestion(text) {
+      document.getElementById("chatInput").value = text;
+    }
+
+    function handleFormSubmission(e) {
+      e.preventDefault();
+      const name = document.getElementById("formName").value;
+      const msg = document.getElementById("formMessage").value;
+      
+      toggleChat(true);
+      appendMessage("user", `Hi Ajmin, my name is ${name}. I am looking to connect about this message: "${msg}"`);
+      e.target.reset();
+      
+      setTimeout(() => {
+        appendMessage("ai", `Thank you for reaching out, ${name}! I've logged your query regarding "${msg.substring(0, 30)}...". Ajmin will review this and respond shortly to your email. Feel free to ask me more about his skills in the meantime!`);
+      }, 1000);
+    }
+
+    function submitChatMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById("chatInput");
+      const val = input.value.trim();
+      if(!val) return;
+      
+      appendMessage("user", val);
+      input.value = "";
+
+      // Simulated Professional Client Side Context Matching Fallback
+      setTimeout(() => {
+        let reply = "I've noted that question regarding Ajmin's UX design criteria! For definitive project breakdowns, please contact him directly at fayazajmin@gmail.com.";
+        if(val.toLowerCase().includes("lofio")) {
+          reply = "LOFIO is Ajmin's Premium Real Estate framework project. It leverages high-fidelity verification paths and transparent agent parameters to minimize property discovery drop-offs.";
+        } else if(val.toLowerCase().includes("process")) {
+          reply = "Ajmin utilizes a 6-tier framework layout: Discover, Define, Ideate, Design, Prototype, and Validate. This anchors layouts around explicit business constraints.";
+        } else if(val.toLowerCase().includes("interview")) {
+          reply = "Excellent! Let's start a mock UI/UX design interview. Question 1: How do you balance customer data metrics against immediate product conversion timelines? Tell me your approach.";
+        }
+        appendMessage("ai", reply);
+      }, 800);
+    }
+
+    function appendMessage(sender, text) {
+      const box = document.getElementById("chatMessages");
+      box.innerHTML += `<div class="msg-bubble ${sender}">${text}</div>`;
+      box.scrollTop = box.scrollHeight;
+    }
+  </script>
 </body>
 </html>
